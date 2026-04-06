@@ -1,9 +1,41 @@
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 export function Footer() {
   return (
     <footer style={{ backgroundColor: "#2C3519" }} className="py-16 px-6">
       <div className="max-w-5xl mx-auto">
+
+        {/* Newsletter signup row */}
+        <div
+          className="mb-12 pb-12"
+          style={{ borderBottom: "1px solid rgba(196, 168, 130, 0.2)" }}
+        >
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2
+                style={{ fontFamily: "var(--font-cormorant)", color: "#FAF7F2" }}
+                className="text-2xl font-light mb-2"
+              >
+                Stay close.
+              </h2>
+              <p
+                style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
+                className="text-sm font-light leading-relaxed opacity-80"
+              >
+                New essays and guides, whenever I write them. No schedule, no noise.
+              </p>
+            </div>
+            <div>
+              <NewsletterSignup
+                variant="dark"
+                buttonText="Subscribe"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Links grid + brand */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-12">
           {/* Brand */}
           <div className="max-w-xs">
@@ -37,6 +69,7 @@ export function Footer() {
 
           {/* Links */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+            {/* Column 1 — Categories */}
             <div>
               <p
                 style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
@@ -57,21 +90,31 @@ export function Footer() {
                 ))}
               </nav>
             </div>
+
+            {/* Column 2 — Pages */}
             <div>
               <p
                 style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
                 className="text-xs tracking-[0.2em] uppercase mb-4 opacity-60"
               >
-                Journal
+                Pages
               </p>
               <nav className="flex flex-col gap-2">
-                <Link
-                  href="/blog"
-                  style={{ fontFamily: "var(--font-jost)", color: "#FAF7F2" }}
-                  className="text-sm font-light hover:text-clay transition-colors opacity-80"
-                >
-                  All essays
-                </Link>
+                {[
+                  { label: "Journal", href: "/blog" },
+                  { label: "About", href: "/about" },
+                  { label: "Work with me", href: "/work-with-me" },
+                  { label: "Free guide", href: "/newsletter" },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    style={{ fontFamily: "var(--font-jost)", color: "#FAF7F2" }}
+                    className="text-sm font-light hover:text-clay transition-colors opacity-80"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
             </div>
           </div>

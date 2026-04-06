@@ -2,6 +2,7 @@ import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { TableOfContents } from "@/components/TableOfContents";
+import { PostCTA } from "@/components/PostCTA";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -201,27 +202,8 @@ export default async function PostPage({ params }: Props) {
                   dangerouslySetInnerHTML={{ __html: post.contentHtml }}
                 />
 
-                {/* CTA */}
-                {post.cta && (
-                  <div
-                    className="mt-16 p-8 border border-clay-light rounded-sm"
-                    style={{ backgroundColor: "rgba(196, 168, 130, 0.08)" }}
-                  >
-                    <p
-                      style={{ fontFamily: "var(--font-cormorant)" }}
-                      className="text-2xl font-light text-deep-brown mb-4"
-                    >
-                      {post.cta.text}
-                    </p>
-                    <Link
-                      href={post.cta.url}
-                      style={{ fontFamily: "var(--font-jost)" }}
-                      className="inline-flex items-center gap-2 text-sm text-clay border-b border-clay pb-0.5 hover:text-deep-brown transition-colors"
-                    >
-                      Explore →
-                    </Link>
-                  </div>
-                )}
+                {/* Post CTA */}
+                <PostCTA />
 
                 {/* Post footer */}
                 <div className="mt-16 pt-8 border-t border-clay-light">

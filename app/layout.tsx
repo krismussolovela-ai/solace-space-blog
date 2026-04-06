@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
     description: "A space to feel at home, wherever you are.",
     images: ["/og-image.jpg"],
   },
+  verification: {
+    google: "a21486663ec2473f",
+  },
   robots: {
     index: true,
     follow: true,
@@ -56,7 +60,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+
+        {/* Google Analytics GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F9VB5FLF67"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F9VB5FLF67');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

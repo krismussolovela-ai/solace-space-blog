@@ -13,7 +13,6 @@ export function Nav() {
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          {/* Concentric circle SVG */}
           <svg
             width="28"
             height="28"
@@ -39,9 +38,8 @@ export function Nav() {
         <nav className="hidden md:flex items-center gap-8">
           {[
             { label: "Journal", href: "/blog" },
-            { label: "Rituals", href: "/blog/category/rituals" },
-            { label: "Guides", href: "/blog/category/guides" },
-            { label: "Reflections", href: "/blog/category/reflections" },
+            { label: "About", href: "/about" },
+            { label: "Work with me", href: "/work-with-me" },
           ].map((item) => (
             <Link
               key={item.href}
@@ -52,6 +50,19 @@ export function Nav() {
               {item.label}
             </Link>
           ))}
+
+          {/* Free guide CTA — soft, clay-accented */}
+          <Link
+            href="/newsletter"
+            style={{
+              fontFamily: "var(--font-jost)",
+              color: "#C4A882",
+              border: "1px solid rgba(196, 168, 130, 0.5)",
+            }}
+            className="text-xs tracking-widest uppercase px-3 py-1.5 rounded-full hover:border-clay transition-colors"
+          >
+            Free guide
+          </Link>
         </nav>
 
         {/* Mobile menu button */}
@@ -81,9 +92,12 @@ export function Nav() {
           <nav className="max-w-5xl mx-auto px-6 py-6 flex flex-col gap-5">
             {[
               { label: "Journal", href: "/blog" },
+              { label: "About", href: "/about" },
+              { label: "Work with me", href: "/work-with-me" },
+              { label: "Free guide", href: "/newsletter" },
               { label: "Rituals", href: "/blog/category/rituals" },
-              { label: "Guides", href: "/blog/category/guides" },
               { label: "Reflections", href: "/blog/category/reflections" },
+              { label: "Guides", href: "/blog/category/guides" },
               { label: "Field Notes", href: "/blog/category/field-notes" },
               { label: "Objects", href: "/blog/category/objects" },
             ].map((item) => (
