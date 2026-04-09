@@ -3,24 +3,24 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://solacespace.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://solace-space-blog.vercel.app"),
   title: {
-    default: "Solace Space — a space to feel at home, wherever you are",
+    default: "Solace Space — a journal for people living between places",
     template: "%s | Solace Space",
   },
   description:
-    "Rituals, reflections, and guides for feeling at home wherever you are. A conscious lifestyle journal for the perpetually in-between.",
-  keywords: ["conscious living", "rituals", "slow lifestyle", "home", "travel", "mindful living"],
-  authors: [{ name: "Solace Space" }],
-  creator: "Solace Space",
+    "Essays, rituals, and objects for anyone who's felt at home everywhere and nowhere. A journal. A newsletter. A small world.",
+  keywords: ["conscious living", "rituals", "objects", "slow lifestyle", "home", "travel", "mindful living", "newsletter"],
+  authors: [{ name: "Kristina Muss" }],
+  creator: "Kristina Muss",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://solacespace.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://solace-space-blog.vercel.app",
     siteName: "Solace Space",
-    title: "Solace Space — a space to feel at home, wherever you are",
+    title: "Solace Space — a journal for people living between places",
     description:
-      "Rituals, reflections, and guides for feeling at home wherever you are.",
+      "Essays, rituals, and objects for anyone who's felt at home everywhere and nowhere.",
     images: [
       {
         url: "/og-image.jpg",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Solace Space",
-    description: "A space to feel at home, wherever you are.",
+    description: "A journal for people living between places.",
     images: ["/og-image.jpg"],
   },
   verification: {
@@ -56,7 +56,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500&display=swap"
           rel="stylesheet"
         />
       </head>

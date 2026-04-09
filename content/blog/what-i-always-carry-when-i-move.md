@@ -5,7 +5,7 @@ date: "2024-12-03"
 description: "Seven specific objects I pack every time I relocate — not clothes or devices, but the things that make any space feel genuinely inhabited."
 keywords: ["packing list", "moving essentials", "home objects", "relocation", "conscious living", "intentional objects"]
 category: Guides
-author: "Solace Space"
+author: "Kristina Muss"
 readingTime: "3 min read"
 cta:
   text: "Explore the Objects category for more on the things we keep and why they matter."

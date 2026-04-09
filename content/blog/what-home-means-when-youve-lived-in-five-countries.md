@@ -5,7 +5,7 @@ date: "2024-10-28"
 description: "A personal essay about the shift from home as location to home as practice — and what a specific morning in Mexico City taught me about belonging."
 keywords: ["home", "belonging", "expat", "CDMX", "conscious living", "identity"]
 category: Reflections
-author: "Solace Space"
+author: "Kristina Muss"
 readingTime: "5 min read"
 cta:
   text: "Read more in Rituals — practical ways to build home wherever you are."

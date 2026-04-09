@@ -9,9 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FAF7F2",
-        "deep-brown": "#342007",
-        clay: "#C4A882",
+        cream: "#FAF5EC",
+        "deep-brown": "#2A2016",
+        clay: "#2AADA4",
+        amber: "#C9873A",
         forest: "#2C3519",
         "clay-light": "#E8D9C4",
         "brown-muted": "#7A5C3E",
@@ -23,11 +24,11 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
-            color: "#342007",
+            color: "#2A2016",
             fontFamily: "var(--font-jost)",
             "h1, h2, h3, h4": {
               fontFamily: "var(--font-cormorant)",
-              color: "#342007",
+              color: "#2A2016",
             },
           },
         },

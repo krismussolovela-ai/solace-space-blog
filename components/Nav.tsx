@@ -8,7 +8,7 @@ export function Nav() {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50"
-      style={{ backgroundColor: "rgba(250, 247, 242, 0.95)", backdropFilter: "blur(8px)" }}
+      style={{ backgroundColor: "rgba(250, 245, 236, 0.95)", backdropFilter: "blur(8px)" }}
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -38,8 +38,9 @@ export function Nav() {
         <nav className="hidden md:flex items-center gap-8">
           {[
             { label: "Journal", href: "/blog" },
+            { label: "Objects", href: "/objects" },
+            { label: "Sessions", href: "/work-with-me" },
             { label: "About", href: "/about" },
-            { label: "Work with me", href: "/work-with-me" },
           ].map((item) => (
             <Link
               key={item.href}
@@ -51,17 +52,17 @@ export function Nav() {
             </Link>
           ))}
 
-          {/* Free guide CTA — soft, clay-accented */}
+          {/* Subscribe CTA */}
           <Link
             href="/newsletter"
             style={{
               fontFamily: "var(--font-jost)",
-              color: "#C4A882",
-              border: "1px solid rgba(196, 168, 130, 0.5)",
+              color: "#2AADA4",
+              border: "1px solid rgba(42, 173, 164, 0.4)",
             }}
             className="text-xs tracking-widest uppercase px-3 py-1.5 rounded-full hover:border-clay transition-colors"
           >
-            Free guide
+            Subscribe
           </Link>
         </nav>
 
@@ -87,14 +88,16 @@ export function Nav() {
       {menuOpen && (
         <div
           className="md:hidden border-t border-clay-light"
-          style={{ backgroundColor: "#FAF7F2" }}
+          style={{ backgroundColor: "#FAF5EC" }}
         >
           <nav className="max-w-5xl mx-auto px-6 py-6 flex flex-col gap-5">
             {[
               { label: "Journal", href: "/blog" },
+              { label: "Objects", href: "/objects" },
+              { label: "Sessions", href: "/work-with-me" },
               { label: "About", href: "/about" },
-              { label: "Work with me", href: "/work-with-me" },
-              { label: "Free guide", href: "/newsletter" },
+              { label: "Subscribe", href: "/newsletter" },
+              { label: "Start Here", href: "/start-here" },
               { label: "Rituals", href: "/blog/category/rituals" },
               { label: "Reflections", href: "/blog/category/reflections" },
               { label: "Guides", href: "/blog/category/guides" },

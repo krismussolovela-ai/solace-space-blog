@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #FAF7F2;
-  --color-deep-brown: #342007;
-  --color-clay: #C4A882;
+  --color-cream: #FAF5EC;
+  --color-deep-brown: #2A2016;
+  --color-clay: #2AADA4;
+  --color-amber: #C9873A;
   --color-forest: #2C3519;
   --color-clay-light: #E8D9C4;
   --color-brown-muted: #7A5C3E;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Jost', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
 }
 
 :root {
-  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
-  --font-jost: 'Jost', system-ui, sans-serif;
+  --font-cormorant: 'Fraunces', Georgia, serif;
+  --font-jost: 'Outfit', system-ui, sans-serif;
 }
 
 * {
@@ -28,8 +29,8 @@ html {
 }
 
 body {
-  background-color: #FAF7F2;
-  color: #342007;
+  background-color: #FAF5EC;
+  color: #2A2016;
   font-family: var(--font-jost);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,25 +41,26 @@ body {
 .prose h3,
 .prose h4 {
   font-family: var(--font-cormorant);
-  font-weight: 500;
-  color: #342007;
+  font-weight: 400;
+  color: #2A2016;
 }
 
 .prose p {
   font-family: var(--font-jost);
-  font-size: 1.0625rem;
-  line-height: 1.8;
-  color: #342007;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #2A2016;
+  font-weight: 300;
 }
 
 .prose a {
-  color: #C4A882;
+  color: #2AADA4;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .prose blockquote {
-  border-left: 3px solid #C4A882;
+  border-left: 3px solid #2AADA4;
   padding-left: 1.5rem;
   font-style: italic;
   font-family: var(--font-cormorant);
@@ -82,6 +84,6 @@ body {
 
 /* TOC styles */
 .toc-active {
-  color: #C4A882;
+  color: #2AADA4;
   font-weight: 500;
 }

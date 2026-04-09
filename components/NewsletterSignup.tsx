@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 
+// Flip to false once the email service is connected
+const COMING_SOON = true;
+
 interface NewsletterSignupProps {
   variant?: "inline" | "dark" | "page";
   heading?: string;
@@ -48,6 +51,44 @@ export function NewsletterSignup({
 
   const isDark = variant === "dark";
   const isPage = variant === "page";
+
+  if (COMING_SOON) {
+    return (
+      <div>
+        {heading && (
+          <h3
+            style={{ fontFamily: "var(--font-cormorant)", color: isDark ? "#FAF5EC" : "#2A2016" }}
+            className={isPage ? "text-5xl font-light mb-3" : "text-3xl font-light mb-3"}
+          >
+            {heading}
+          </h3>
+        )}
+        {subheading && (
+          <p
+            style={{ fontFamily: "var(--font-jost)", color: isDark ? "rgba(196,168,130,0.85)" : "#7A5C3E" }}
+            className="text-sm font-light leading-relaxed mb-5"
+          >
+            {subheading}
+          </p>
+        )}
+        <p
+          style={{
+            fontFamily: "var(--font-cormorant)",
+            color: isDark ? "#FAF5EC" : "#2A2016",
+          }}
+          className="text-xl italic font-light"
+        >
+          Newsletter coming soon.
+        </p>
+        <p
+          style={{ fontFamily: "var(--font-jost)", color: isDark ? "rgba(196,168,130,0.6)" : "#7A5C3E" }}
+          className="mt-2 text-xs font-light"
+        >
+          Check back shortly — the guide will be here when we launch.
+        </p>
+      </div>
+    );
+  }
 
   const inputStyle: React.CSSProperties = isDark
     ? {

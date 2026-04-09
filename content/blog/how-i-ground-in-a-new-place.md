@@ -5,7 +5,7 @@ date: "2024-11-12"
 description: "A practical, personal ritual for arriving somewhere unfamiliar — no journaling required, just one object and a specific sequence of small actions."
 keywords: ["grounding ritual", "travel ritual", "arriving", "new place", "conscious living"]
 category: Rituals
-author: "Solace Space"
+author: "Kristina Muss"
 readingTime: "4 min read"
 cta:
   text: "Explore the Objects category for the things we carry to make any space feel inhabited."

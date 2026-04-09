@@ -14,7 +14,7 @@ export function Footer() {
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <div>
               <h2
-                style={{ fontFamily: "var(--font-cormorant)", color: "#FAF7F2" }}
+                style={{ fontFamily: "var(--font-cormorant)", color: "#FAF5EC" }}
                 className="text-2xl font-light mb-2"
               >
                 Stay close.
@@ -23,7 +23,7 @@ export function Footer() {
                 style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
                 className="text-sm font-light leading-relaxed opacity-80"
               >
-                New essays and guides, whenever I write them. No schedule, no noise.
+                New essays and objects, whenever there&apos;s something worth sharing. No schedule, no noise.
               </p>
             </div>
             <div>
@@ -53,7 +53,7 @@ export function Footer() {
                 <circle cx="14" cy="14" r="1.5" fill="#C4A882" />
               </svg>
               <span
-                style={{ fontFamily: "var(--font-cormorant)", color: "#FAF7F2" }}
+                style={{ fontFamily: "var(--font-cormorant)", color: "#FAF5EC" }}
                 className="text-lg font-medium tracking-wide"
               >
                 Solace Space
@@ -61,28 +61,34 @@ export function Footer() {
             </div>
             <p
               style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
-              className="text-sm font-light leading-relaxed opacity-80 italic"
+              className="text-sm font-light leading-relaxed opacity-80 italic mb-3"
             >
-              a space to feel at home, wherever you are
+              a journal for people living between places
+            </p>
+            <p
+              style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
+              className="text-xs tracking-widest uppercase opacity-50"
+            >
+              @solacespace
             </p>
           </div>
 
           {/* Links */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">
-            {/* Column 1 — Categories */}
+            {/* Column 1 — Themes */}
             <div>
               <p
                 style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
                 className="text-xs tracking-[0.2em] uppercase mb-4 opacity-60"
               >
-                Categories
+                Themes
               </p>
               <nav className="flex flex-col gap-2">
                 {["Rituals", "Reflections", "Guides", "Field Notes", "Objects"].map((cat) => (
                   <Link
                     key={cat}
                     href={`/blog/category/${cat.toLowerCase().replace(/ /g, "-")}`}
-                    style={{ fontFamily: "var(--font-jost)", color: "#FAF7F2" }}
+                    style={{ fontFamily: "var(--font-jost)", color: "#FAF5EC" }}
                     className="text-sm font-light hover:text-clay transition-colors opacity-80"
                   >
                     {cat}
@@ -102,14 +108,16 @@ export function Footer() {
               <nav className="flex flex-col gap-2">
                 {[
                   { label: "Journal", href: "/blog" },
+                  { label: "Objects", href: "/objects" },
+                  { label: "Start Here", href: "/start-here" },
                   { label: "About", href: "/about" },
-                  { label: "Work with me", href: "/work-with-me" },
-                  { label: "Free guide", href: "/newsletter" },
+                  { label: "Sessions", href: "/work-with-me" },
+                  { label: "Subscribe", href: "/newsletter" },
                 ].map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    style={{ fontFamily: "var(--font-jost)", color: "#FAF7F2" }}
+                    style={{ fontFamily: "var(--font-jost)", color: "#FAF5EC" }}
                     className="text-sm font-light hover:text-clay transition-colors opacity-80"
                   >
                     {item.label}
@@ -121,12 +129,18 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t" style={{ borderColor: "rgba(196, 168, 130, 0.2)" }}>
+        <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-start md:items-center gap-2" style={{ borderColor: "rgba(196, 168, 130, 0.2)" }}>
           <p
             style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
             className="text-xs opacity-50"
           >
             © {new Date().getFullYear()} Solace Space. All rights reserved.
+          </p>
+          <p
+            style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
+            className="text-xs opacity-40 tracking-widest uppercase"
+          >
+            @solacespace
           </p>
         </div>
       </div>
