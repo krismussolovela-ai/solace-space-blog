@@ -53,7 +53,7 @@ export default async function HomePage() {
         {/* ── 1b. Banner image ── */}
         <div
           data-shift-bg="#FAF5EC"
-          style={{ height: "260px", overflow: "hidden", width: "100%" }}
+          style={{ height: "340px", overflow: "hidden", width: "100%" }}
         >
           <img
             src="/images/banner-mirror.jpg"
@@ -62,7 +62,7 @@ export default async function HomePage() {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: "center 38%",
+              objectPosition: "center 22%",
               display: "block",
             }}
           />
