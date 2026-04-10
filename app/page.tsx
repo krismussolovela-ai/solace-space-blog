@@ -45,12 +45,7 @@ export default async function HomePage() {
       <ScrollColorShift />
 
       <main>
-        {/* ── 1. Hero ── */}
-        <div data-shift-bg="#FAF5EC">
-          <TextMaskHero />
-        </div>
-
-        {/* ── 1b. Banner image ── */}
+        {/* ── 1. Banner image ── */}
         <div
           data-shift-bg="#FAF5EC"
           style={{ height: "340px", overflow: "hidden", width: "100%" }}
@@ -68,7 +63,12 @@ export default async function HomePage() {
           />
         </div>
 
-        {/* ── 2. Positioning statement ── */}
+        {/* ── 2. Hero ── */}
+        <div data-shift-bg="#FAF5EC">
+          <TextMaskHero />
+        </div>
+
+        {/* ── 3. Positioning statement ── */}
         <section
           className="py-16 px-6"
           data-shift-bg="#FAF5EC"
