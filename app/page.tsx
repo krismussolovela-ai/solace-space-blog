@@ -50,50 +50,68 @@ export default async function HomePage() {
         </div>
 
         {/* ── 2. Recent posts — editorial list ── */}
-        {recent.length > 0 && (
-          <section className="py-16 px-6" data-shift-bg="#FAF5EC">
-            <div className="max-w-3xl mx-auto">
-              {/* Header row */}
-              <div className="flex items-center justify-between mb-10" style={{ borderBottom: "1px solid #E8D9C4", paddingBottom: "12px" }}>
-                <p style={{ fontFamily: "var(--font-jost)" }} className="text-xs tracking-[0.2em] uppercase text-clay">
-                  From the journal
-                </p>
-                <Link href="/blog" style={{ fontFamily: "var(--font-jost)" }} className="text-xs tracking-widest uppercase text-deep-brown hover:text-clay transition-colors">
-                  All essays →
-                </Link>
-              </div>
+        {recent.length > 0 && (() => {
+          const pillarColor: Record<string, { accent: string; bg: string }> = {
+            rituals:     { accent: "#C9873A", bg: "rgba(201,135,58,0.06)" },
+            reflections: { accent: "#7B9E8B", bg: "rgba(123,158,139,0.06)" },
+            guides:      { accent: "#2AADA4", bg: "rgba(42,173,164,0.06)" },
+            "field notes": { accent: "#8B6F5E", bg: "rgba(139,111,94,0.06)" },
+            objects:     { accent: "#C4A882", bg: "rgba(196,168,130,0.08)" },
+          };
+          return (
+            <section className="py-16 px-6" data-shift-bg="#FAF5EC">
+              <div className="max-w-3xl mx-auto">
+                {/* Header row */}
+                <div className="flex items-center justify-between mb-10" style={{ borderBottom: "1px solid #E8D9C4", paddingBottom: "12px" }}>
+                  <p style={{ fontFamily: "var(--font-jost)" }} className="text-xs tracking-[0.2em] uppercase text-clay">
+                    From the journal
+                  </p>
+                  <Link href="/blog" style={{ fontFamily: "var(--font-jost)" }} className="text-xs tracking-widest uppercase text-deep-brown hover:text-clay transition-colors">
+                    All essays →
+                  </Link>
+                </div>
 
-              {/* Post rows */}
-              {recent.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group flex flex-col gap-2 py-8 hover:opacity-80 transition-opacity"
-                  style={{ borderBottom: "1px solid #E8D9C4" }}
-                >
-                  <p style={{ fontFamily: "var(--font-jost)", color: "#2AADA4" }} className="text-xs tracking-[0.18em] uppercase">
-                    {post.category}
-                  </p>
-                  <h3 style={{ fontFamily: "var(--font-cormorant)", color: "#2A2016" }} className="text-2xl md:text-3xl font-light leading-snug">
-                    {post.title}
-                  </h3>
-                  <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-sm font-light leading-relaxed">
-                    {post.description}
-                  </p>
-                  <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-xs tracking-widest uppercase mt-1 opacity-60">
-                    {post.readingTime} · Read →
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+                {/* Post rows */}
+                {recent.map((post) => {
+                  const key = post.category?.toLowerCase() ?? "";
+                  const { accent, bg } = pillarColor[key] ?? { accent: "#2AADA4", bg: "rgba(42,173,164,0.06)" };
+                  return (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="group flex flex-col gap-2 py-7 px-5 hover:opacity-90 transition-opacity"
+                      style={{
+                        borderBottom: "1px solid #E8D9C4",
+                        borderLeft: `3px solid ${accent}`,
+                        backgroundColor: bg,
+                        marginBottom: "2px",
+                      }}
+                    >
+                      <p style={{ fontFamily: "var(--font-jost)", color: accent }} className="text-xs tracking-[0.18em] uppercase">
+                        {post.category}
+                      </p>
+                      <h3 style={{ fontFamily: "var(--font-cormorant)", color: "#2A2016" }} className="text-2xl md:text-3xl font-light leading-snug">
+                        {post.title}
+                      </h3>
+                      <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-sm font-light leading-relaxed">
+                        {post.description}
+                      </p>
+                      <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-xs tracking-widest uppercase mt-1 opacity-60">
+                        {post.readingTime} · Read →
+                      </p>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* ── 3. Editorial image break ── */}
         <section data-shift-bg="#FAF5EC" className="py-16 px-16">
           <div className="max-w-3xl mx-auto">
             <img
-              src="/images/banner-mirror.jpg"
+              src="/images/banner-mirror.png"
               alt="A hand holds a vintage oval mirror reflecting green mountains and coastline at golden hour"
               style={{ width: "100%", height: "auto", display: "block" }}
             />
