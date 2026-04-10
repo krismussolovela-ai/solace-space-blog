@@ -45,34 +45,9 @@ export default async function HomePage() {
       <ScrollColorShift />
 
       <main>
-        {/* ── 1. Hero — mirror image background with text overlay ── */}
-        <div data-shift-bg="#FAF5EC" style={{ position: "relative", overflow: "hidden" }}>
-          {/* Background image */}
-          <img
-            src="/images/banner-mirror.jpg"
-            alt=""
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 28%",
-            }}
-          />
-          {/* Dark gradient overlay — heavier at bottom so text is readable */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to bottom, rgba(20,12,4,0.45) 0%, rgba(20,12,4,0.65) 60%, rgba(20,12,4,0.82) 100%)",
-            }}
-          />
-          {/* Hero text on top */}
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <TextMaskHero onImage />
-          </div>
+        {/* ── 1. Hero ── */}
+        <div data-shift-bg="#FAF5EC">
+          <TextMaskHero />
         </div>
 
         {/* ── 2. Recent posts — Sticky Card Stack ── */}

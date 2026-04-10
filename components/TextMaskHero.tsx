@@ -104,42 +104,42 @@ export function TextMaskHero({ onImage = false }: { onImage?: boolean }) {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col justify-center pt-28 pb-24 px-6 max-w-5xl mx-auto"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center pt-28 pb-24 px-6"
     >
+      {/* Animated concentric-circle mark — centred, ripple effect */}
+      <svg
+        ref={markRef}
+        width="80"
+        height="80"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="mb-8"
+        aria-hidden="true"
+      >
+        <circle ref={outerRef} cx="14" cy="14" r="13" stroke="#C4A882" strokeWidth="1" />
+        <circle ref={midRef}   cx="14" cy="14" r="9"  stroke="#C4A882" strokeWidth="1" />
+        <circle ref={innerRef} cx="14" cy="14" r="5"  stroke="#C4A882" strokeWidth="1" />
+        <circle ref={dotRef}   cx="14" cy="14" r="1.5" fill="#C4A882" />
+      </svg>
+
       {/* Eyebrow */}
       <p
-        style={{ fontFamily: "var(--font-jost)", color: onImage ? "rgba(250,245,236,0.7)" : undefined }}
-        className={`text-sm tracking-[0.2em] uppercase mb-8 ${onImage ? "" : "text-clay"}`}
+        style={{ fontFamily: "var(--font-jost)" }}
+        className="text-sm tracking-[0.2em] uppercase text-clay mb-8"
       >
         A conscious lifestyle journal
       </p>
 
-      {/* Animated concentric-circle mark — lives above the headline */}
-      <svg
-        ref={markRef}
-        width="64"
-        height="64"
-        viewBox="0 0 28 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="mb-7"
-        aria-hidden="true"
-      >
-        <circle ref={outerRef} cx="14" cy="14" r="13" stroke={onImage ? "rgba(250,245,236,0.6)" : "#C4A882"} strokeWidth="1" />
-        <circle ref={midRef}   cx="14" cy="14" r="9"  stroke={onImage ? "rgba(250,245,236,0.6)" : "#C4A882"} strokeWidth="1" />
-        <circle ref={innerRef} cx="14" cy="14" r="5"  stroke={onImage ? "rgba(250,245,236,0.6)" : "#C4A882"} strokeWidth="1" />
-        <circle ref={dotRef}   cx="14" cy="14" r="1.5" fill={onImage ? "rgba(250,245,236,0.8)" : "#C4A882"} />
-      </svg>
-
       {/* Stacked headline — ghost outline + filled reveal */}
-      <div className="relative max-w-4xl mb-8 select-none">
+      <div className="relative w-full max-w-4xl mb-8 select-none">
         {/* Layer 1: ghost outline */}
         <h1
           aria-hidden="true"
           style={{
             ...headingStyle,
             color: "transparent",
-            WebkitTextStroke: onImage ? "1px rgba(250,245,236,0.2)" : "1px rgba(52,32,7,0.15)",
+            WebkitTextStroke: "1px rgba(52,32,7,0.15)",
           }}
         >
           a space to feel at home,
@@ -155,7 +155,7 @@ export function TextMaskHero({ onImage = false }: { onImage?: boolean }) {
         >
           <h1
             aria-label="a space to feel at home, wherever you are"
-            style={{ ...headingStyle, color: onImage ? "#FAF5EC" : "#342007" }}
+            style={{ ...headingStyle, color: "#342007" }}
           >
             a space to feel at home,
             <br />
@@ -166,33 +166,25 @@ export function TextMaskHero({ onImage = false }: { onImage?: boolean }) {
 
       {/* Sub-headline */}
       <p
-        style={{ fontFamily: "var(--font-jost)", color: onImage ? "rgba(250,245,236,0.8)" : "#7A5C3E" }}
+        style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
         className="text-base md:text-lg font-light leading-relaxed max-w-xl mb-10"
       >
         Rituals, reflections, and honest guides for the perpetually in-between.
       </p>
 
       {/* CTAs */}
-      <div className="flex flex-wrap items-center gap-6">
+      <div className="flex flex-wrap items-center justify-center gap-6">
         <Link
           href="/blog"
-          style={{
-            fontFamily: "var(--font-jost)",
-            color: onImage ? "#FAF5EC" : undefined,
-            borderColor: onImage ? "rgba(250,245,236,0.5)" : undefined,
-          }}
-          className={`inline-flex items-center gap-2 text-sm tracking-widest uppercase pb-1 hover:opacity-70 transition-opacity ${onImage ? "border-b" : "text-deep-brown border-b border-clay hover:text-clay"}`}
+          style={{ fontFamily: "var(--font-jost)" }}
+          className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-deep-brown border-b border-clay pb-1 hover:text-clay transition-colors"
         >
           Read the journal →
         </Link>
         <Link
           href="/newsletter"
-          style={{
-            fontFamily: "var(--font-jost)",
-            color: onImage ? "#FAF5EC" : undefined,
-            borderColor: onImage ? "rgba(250,245,236,0.5)" : undefined,
-          }}
-          className={`inline-flex items-center gap-2 text-sm tracking-widest uppercase pb-1 hover:opacity-70 transition-opacity ${onImage ? "border-b" : "text-deep-brown border-b border-clay hover:text-clay"}`}
+          style={{ fontFamily: "var(--font-jost)" }}
+          className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-deep-brown border-b border-clay pb-1 hover:text-clay transition-colors"
         >
           Get the free guide →
         </Link>
