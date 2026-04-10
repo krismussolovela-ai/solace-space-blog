@@ -4,7 +4,6 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { TextMaskHero } from "@/components/TextMaskHero";
-import { StickyPostCards } from "@/components/StickyPostCards";
 import { ScrollColorShift } from "@/components/ScrollColorShift";
 
 export default async function HomePage() {
@@ -50,25 +49,43 @@ export default async function HomePage() {
           <TextMaskHero />
         </div>
 
-        {/* ── 2. Recent posts — Sticky Card Stack ── */}
+        {/* ── 2. Recent posts — editorial list ── */}
         {recent.length > 0 && (
-          <section className="pt-16 px-0" data-shift-bg="#FAF5EC">
-            <div className="max-w-5xl mx-auto px-6 mb-10 flex items-center justify-between">
-              <p
-                style={{ fontFamily: "var(--font-jost)" }}
-                className="text-xs tracking-[0.2em] uppercase text-clay"
-              >
-                From the journal
-              </p>
-              <Link
-                href="/blog"
-                style={{ fontFamily: "var(--font-jost)" }}
-                className="text-xs tracking-widest uppercase text-deep-brown border-b border-clay-light pb-0.5 hover:text-clay transition-colors"
-              >
-                All essays →
-              </Link>
+          <section className="py-16 px-6" data-shift-bg="#FAF5EC">
+            <div className="max-w-3xl mx-auto">
+              {/* Header row */}
+              <div className="flex items-center justify-between mb-10" style={{ borderBottom: "1px solid #E8D9C4", paddingBottom: "12px" }}>
+                <p style={{ fontFamily: "var(--font-jost)" }} className="text-xs tracking-[0.2em] uppercase text-clay">
+                  From the journal
+                </p>
+                <Link href="/blog" style={{ fontFamily: "var(--font-jost)" }} className="text-xs tracking-widest uppercase text-deep-brown hover:text-clay transition-colors">
+                  All essays →
+                </Link>
+              </div>
+
+              {/* Post rows */}
+              {recent.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col gap-2 py-8 hover:opacity-80 transition-opacity"
+                  style={{ borderBottom: "1px solid #E8D9C4" }}
+                >
+                  <p style={{ fontFamily: "var(--font-jost)", color: "#2AADA4" }} className="text-xs tracking-[0.18em] uppercase">
+                    {post.category}
+                  </p>
+                  <h3 style={{ fontFamily: "var(--font-cormorant)", color: "#2A2016" }} className="text-2xl md:text-3xl font-light leading-snug">
+                    {post.title}
+                  </h3>
+                  <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-sm font-light leading-relaxed">
+                    {post.description}
+                  </p>
+                  <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-xs tracking-widest uppercase mt-1 opacity-60">
+                    {post.readingTime} · Read →
+                  </p>
+                </Link>
+              ))}
             </div>
-            <StickyPostCards posts={recent} />
           </section>
         )}
 
