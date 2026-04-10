@@ -50,6 +50,24 @@ export default async function HomePage() {
           <TextMaskHero />
         </div>
 
+        {/* ── 1b. Banner image ── */}
+        <div
+          data-shift-bg="#FAF5EC"
+          style={{ height: "260px", overflow: "hidden", width: "100%" }}
+        >
+          <img
+            src="/images/banner-mirror.jpg"
+            alt="A vintage mirror held up to a coastal mountain landscape at golden hour"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center 38%",
+              display: "block",
+            }}
+          />
+        </div>
+
         {/* ── 2. Positioning statement ── */}
         <section
           className="py-16 px-6"
