@@ -73,20 +73,16 @@ export default async function HomePage() {
         )}
 
         {/* ── 3. Editorial image break ── */}
-        <section data-shift-bg="#FAF5EC" style={{ overflow: "hidden" }}>
-          <div style={{ height: "55vh", minHeight: "360px", maxHeight: "620px", position: "relative" }}>
-            <img
-              src="/images/banner-mirror.jpg"
-              alt="A hand holds a vintage oval mirror reflecting green mountains and coastline at golden hour"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center 45%",
-                display: "block",
-              }}
-            />
-          </div>
+        <section data-shift-bg="#FAF5EC">
+          <img
+            src="/images/banner-mirror.jpg"
+            alt="A hand holds a vintage oval mirror reflecting green mountains and coastline at golden hour"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          />
           <p
             style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
             className="text-xs tracking-[0.15em] uppercase px-6 py-3 opacity-60"
