@@ -50,13 +50,31 @@ export default async function HomePage() {
           <TextMaskHero />
         </div>
 
-        {/* ── 2. Positioning statement ── */}
+        {/* ── 2. Editorial split — image + positioning statement ── */}
         <section
-          className="py-16 px-6"
           data-shift-bg="#FAF5EC"
           style={{ borderBottom: "1px solid #E8D9C4" }}
+          className="grid md:grid-cols-2"
         >
-          <div className="max-w-3xl mx-auto">
+          {/* Left — portrait image, full height */}
+          <div style={{ minHeight: "540px", overflow: "hidden" }} className="relative">
+            <img
+              src="/images/banner-mirror.jpg"
+              alt="A vintage mirror held up to a coastal mountain landscape at golden hour"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 30%",
+                display: "block",
+                position: "absolute",
+                inset: 0,
+              }}
+            />
+          </div>
+
+          {/* Right — text */}
+          <div className="flex flex-col justify-center px-10 py-16" style={{ backgroundColor: "#FAF5EC" }}>
             <p
               style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
               className="text-xs tracking-[0.2em] uppercase mb-5"
@@ -75,7 +93,7 @@ export default async function HomePage() {
             </h2>
             <p
               style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
-              className="text-sm font-light leading-relaxed max-w-xl mb-8"
+              className="text-sm font-light leading-relaxed mb-8"
             >
               Solace Space is a journal and newsletter for people living between places — the ones who feel at home everywhere and nowhere. Essays on rituals, objects, and the interior life of a life in motion.
             </p>
