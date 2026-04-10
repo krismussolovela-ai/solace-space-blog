@@ -45,86 +45,37 @@ export default async function HomePage() {
       <ScrollColorShift />
 
       <main>
-        {/* ── 1. Hero ── */}
-        <div data-shift-bg="#FAF5EC">
-          <TextMaskHero />
+        {/* ── 1. Hero — mirror image background with text overlay ── */}
+        <div data-shift-bg="#FAF5EC" style={{ position: "relative", overflow: "hidden" }}>
+          {/* Background image */}
+          <img
+            src="/images/banner-mirror.jpg"
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center 28%",
+            }}
+          />
+          {/* Dark gradient overlay — heavier at bottom so text is readable */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to bottom, rgba(20,12,4,0.45) 0%, rgba(20,12,4,0.65) 60%, rgba(20,12,4,0.82) 100%)",
+            }}
+          />
+          {/* Hero text on top */}
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <TextMaskHero onImage />
+          </div>
         </div>
 
-        {/* ── 2. Editorial split — image + positioning statement ── */}
-        <section
-          data-shift-bg="#FAF5EC"
-          style={{ borderBottom: "1px solid #E8D9C4" }}
-          className="grid md:grid-cols-2"
-        >
-          {/* Left — portrait image, full height */}
-          <div style={{ minHeight: "540px", overflow: "hidden" }} className="relative">
-            <img
-              src="/images/banner-mirror.jpg"
-              alt="A vintage mirror held up to a coastal mountain landscape at golden hour"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center 30%",
-                display: "block",
-                position: "absolute",
-                inset: 0,
-              }}
-            />
-          </div>
-
-          {/* Right — text */}
-          <div className="flex flex-col justify-center px-10 py-16" style={{ backgroundColor: "#FAF5EC" }}>
-            <p
-              style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
-              className="text-xs tracking-[0.2em] uppercase mb-5"
-            >
-              @solacespace
-            </p>
-            <h2
-              style={{ fontFamily: "var(--font-cormorant)" }}
-              className="text-3xl md:text-4xl font-light text-deep-brown leading-tight mb-6"
-            >
-              What makes a room feel like home.
-              <br />
-              <em>Which objects survive every move.</em>
-              <br />
-              How to arrive without feeling like a ghost.
-            </h2>
-            <p
-              style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
-              className="text-sm font-light leading-relaxed mb-8"
-            >
-              Solace Space is a journal and newsletter for people living between places — the ones who feel at home everywhere and nowhere. Essays on rituals, objects, and the interior life of a life in motion.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 items-start">
-              <Link
-                href="/newsletter"
-                style={{
-                  fontFamily: "var(--font-jost)",
-                  backgroundColor: "#2AADA4",
-                  color: "#FAF5EC",
-                }}
-                className="text-xs tracking-widest uppercase px-5 py-3 hover:opacity-90 transition-opacity"
-              >
-                Get the free guide →
-              </Link>
-              <Link
-                href="/start-here"
-                style={{
-                  fontFamily: "var(--font-jost)",
-                  color: "#2A2016",
-                  borderBottom: "1px solid #E8D9C4",
-                }}
-                className="text-xs tracking-widest uppercase pb-1 hover:border-clay transition-colors self-center"
-              >
-                New here? Start here →
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 3. Recent posts — Sticky Card Stack ── */}
+        {/* ── 2. Recent posts — Sticky Card Stack ── */}
         {recent.length > 0 && (
           <section className="pt-16 px-0" data-shift-bg="#FAF5EC">
             <div className="max-w-5xl mx-auto px-6 mb-10 flex items-center justify-between">

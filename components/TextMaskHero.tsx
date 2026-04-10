@@ -7,7 +7,7 @@ const C_OUTER = 2 * Math.PI * 13; // 81.68
 const C_MID   = 2 * Math.PI * 9;  // 56.55
 const C_INNER = 2 * Math.PI * 5;  // 31.42
 
-export function TextMaskHero() {
+export function TextMaskHero({ onImage = false }: { onImage?: boolean }) {
   const sectionRef  = useRef<HTMLElement>(null);
   const revealRef   = useRef<HTMLDivElement>(null);
   const markRef     = useRef<SVGSVGElement>(null);
@@ -108,8 +108,8 @@ export function TextMaskHero() {
     >
       {/* Eyebrow */}
       <p
-        style={{ fontFamily: "var(--font-jost)" }}
-        className="text-sm tracking-[0.2em] uppercase text-clay mb-8"
+        style={{ fontFamily: "var(--font-jost)", color: onImage ? "rgba(250,245,236,0.7)" : undefined }}
+        className={`text-sm tracking-[0.2em] uppercase mb-8 ${onImage ? "" : "text-clay"}`}
       >
         A conscious lifestyle journal
       </p>
@@ -125,10 +125,10 @@ export function TextMaskHero() {
         className="mb-7"
         aria-hidden="true"
       >
-        <circle ref={outerRef} cx="14" cy="14" r="13" stroke="#C4A882" strokeWidth="1" />
-        <circle ref={midRef}   cx="14" cy="14" r="9"  stroke="#C4A882" strokeWidth="1" />
-        <circle ref={innerRef} cx="14" cy="14" r="5"  stroke="#C4A882" strokeWidth="1" />
-        <circle ref={dotRef}   cx="14" cy="14" r="1.5" fill="#C4A882" />
+        <circle ref={outerRef} cx="14" cy="14" r="13" stroke={onImage ? "rgba(250,245,236,0.6)" : "#C4A882"} strokeWidth="1" />
+        <circle ref={midRef}   cx="14" cy="14" r="9"  stroke={onImage ? "rgba(250,245,236,0.6)" : "#C4A882"} strokeWidth="1" />
+        <circle ref={innerRef} cx="14" cy="14" r="5"  stroke={onImage ? "rgba(250,245,236,0.6)" : "#C4A882"} strokeWidth="1" />
+        <circle ref={dotRef}   cx="14" cy="14" r="1.5" fill={onImage ? "rgba(250,245,236,0.8)" : "#C4A882"} />
       </svg>
 
       {/* Stacked headline — ghost outline + filled reveal */}
@@ -139,7 +139,7 @@ export function TextMaskHero() {
           style={{
             ...headingStyle,
             color: "transparent",
-            WebkitTextStroke: "1px rgba(52,32,7,0.15)",
+            WebkitTextStroke: onImage ? "1px rgba(250,245,236,0.2)" : "1px rgba(52,32,7,0.15)",
           }}
         >
           a space to feel at home,
@@ -155,7 +155,7 @@ export function TextMaskHero() {
         >
           <h1
             aria-label="a space to feel at home, wherever you are"
-            style={{ ...headingStyle, color: "#342007" }}
+            style={{ ...headingStyle, color: onImage ? "#FAF5EC" : "#342007" }}
           >
             a space to feel at home,
             <br />
@@ -166,7 +166,7 @@ export function TextMaskHero() {
 
       {/* Sub-headline */}
       <p
-        style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
+        style={{ fontFamily: "var(--font-jost)", color: onImage ? "rgba(250,245,236,0.8)" : "#7A5C3E" }}
         className="text-base md:text-lg font-light leading-relaxed max-w-xl mb-10"
       >
         Rituals, reflections, and honest guides for the perpetually in-between.
@@ -176,15 +176,23 @@ export function TextMaskHero() {
       <div className="flex flex-wrap items-center gap-6">
         <Link
           href="/blog"
-          style={{ fontFamily: "var(--font-jost)" }}
-          className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-deep-brown border-b border-clay pb-1 hover:text-clay transition-colors"
+          style={{
+            fontFamily: "var(--font-jost)",
+            color: onImage ? "#FAF5EC" : undefined,
+            borderColor: onImage ? "rgba(250,245,236,0.5)" : undefined,
+          }}
+          className={`inline-flex items-center gap-2 text-sm tracking-widest uppercase pb-1 hover:opacity-70 transition-opacity ${onImage ? "border-b" : "text-deep-brown border-b border-clay hover:text-clay"}`}
         >
           Read the journal →
         </Link>
         <Link
           href="/newsletter"
-          style={{ fontFamily: "var(--font-jost)" }}
-          className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-deep-brown border-b border-clay pb-1 hover:text-clay transition-colors"
+          style={{
+            fontFamily: "var(--font-jost)",
+            color: onImage ? "#FAF5EC" : undefined,
+            borderColor: onImage ? "rgba(250,245,236,0.5)" : undefined,
+          }}
+          className={`inline-flex items-center gap-2 text-sm tracking-widest uppercase pb-1 hover:opacity-70 transition-opacity ${onImage ? "border-b" : "text-deep-brown border-b border-clay hover:text-clay"}`}
         >
           Get the free guide →
         </Link>
