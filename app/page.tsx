@@ -73,22 +73,20 @@ export default async function HomePage() {
         )}
 
         {/* ── 3. Editorial image break ── */}
-        <section data-shift-bg="#FAF5EC">
-          <img
-            src="/images/banner-mirror.jpg"
-            alt="A hand holds a vintage oval mirror reflecting green mountains and coastline at golden hour"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-            }}
-          />
-          <p
-            style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
-            className="text-xs tracking-[0.15em] uppercase px-6 py-3 opacity-60"
-          >
-            Kauaʻi, Hawaiʻi &mdash; every place looks different through the right frame
-          </p>
+        <section data-shift-bg="#FAF5EC" className="py-16 px-16">
+          <div className="max-w-3xl mx-auto">
+            <img
+              src="/images/banner-mirror.jpg"
+              alt="A hand holds a vintage oval mirror reflecting green mountains and coastline at golden hour"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+            <p
+              style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
+              className="text-xs tracking-[0.15em] uppercase pt-3 opacity-60"
+            >
+              Kauaʻi, Hawaiʻi &mdash; every place looks different through the right frame
+            </p>
+          </div>
         </section>
 
         {/* ── 4. Themes / pillars ── */}
