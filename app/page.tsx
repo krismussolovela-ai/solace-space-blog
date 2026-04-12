@@ -52,11 +52,18 @@ export default async function HomePage() {
         {/* ── 2. Recent posts — editorial list ── */}
         {recent.length > 0 && (() => {
           const pillarColor: Record<string, { accent: string; bg: string }> = {
-            rituals:     { accent: "#C9873A", bg: "rgba(201,135,58,0.06)" },
-            reflections: { accent: "#7B9E8B", bg: "rgba(123,158,139,0.06)" },
-            guides:      { accent: "#2AADA4", bg: "rgba(42,173,164,0.06)" },
+            rituals:       { accent: "#C9873A", bg: "rgba(201,135,58,0.06)" },
+            reflections:   { accent: "#7B9E8B", bg: "rgba(123,158,139,0.06)" },
+            guides:        { accent: "#2AADA4", bg: "rgba(42,173,164,0.06)" },
             "field notes": { accent: "#8B6F5E", bg: "rgba(139,111,94,0.06)" },
-            objects:     { accent: "#C4A882", bg: "rgba(196,168,130,0.08)" },
+            objects:       { accent: "#C4A882", bg: "rgba(196,168,130,0.08)" },
+          };
+          const pillarImage: Record<string, string> = {
+            rituals:       "/images/rituals-table.jpg",
+            reflections:   "/images/reflections-light.jpg",
+            guides:        "/images/guides-morning.jpg",
+            "field notes": "/images/fieldnotes-desk.jpg",
+            objects:       "/images/objects-ceramics.jpg",
           };
           return (
             <section className="py-16 px-6" data-shift-bg="#FAF5EC">
@@ -75,11 +82,12 @@ export default async function HomePage() {
                 {recent.map((post) => {
                   const key = post.category?.toLowerCase() ?? "";
                   const { accent, bg } = pillarColor[key] ?? { accent: "#2AADA4", bg: "rgba(42,173,164,0.06)" };
+                  const imgSrc = pillarImage[key];
                   return (
                     <Link
                       key={post.slug}
                       href={`/blog/${post.slug}`}
-                      className="group flex flex-col gap-2 py-7 px-5 hover:opacity-90 transition-opacity"
+                      className="group flex flex-row items-center gap-5 py-6 px-5 hover:opacity-90 transition-opacity"
                       style={{
                         borderBottom: "1px solid #E8D9C4",
                         borderLeft: `3px solid ${accent}`,
@@ -87,18 +95,30 @@ export default async function HomePage() {
                         marginBottom: "2px",
                       }}
                     >
-                      <p style={{ fontFamily: "var(--font-jost)", color: accent }} className="text-xs tracking-[0.18em] uppercase">
-                        {post.category}
-                      </p>
-                      <h3 style={{ fontFamily: "var(--font-cormorant)", color: "#2A2016" }} className="text-2xl md:text-3xl font-light leading-snug">
-                        {post.title}
-                      </h3>
-                      <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-sm font-light leading-relaxed">
-                        {post.description}
-                      </p>
-                      <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-xs tracking-widest uppercase mt-1 opacity-60">
-                        {post.readingTime} · Read →
-                      </p>
+                      {/* Text */}
+                      <div className="flex-1 flex flex-col gap-2 min-w-0">
+                        <p style={{ fontFamily: "var(--font-jost)", color: accent }} className="text-xs tracking-[0.18em] uppercase">
+                          {post.category}
+                        </p>
+                        <h3 style={{ fontFamily: "var(--font-cormorant)", color: "#2A2016" }} className="text-2xl md:text-3xl font-light leading-snug">
+                          {post.title}
+                        </h3>
+                        <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-sm font-light leading-relaxed line-clamp-2">
+                          {post.description}
+                        </p>
+                        <p style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }} className="text-xs tracking-widest uppercase mt-1 opacity-60">
+                          {post.readingTime} · Read →
+                        </p>
+                      </div>
+                      {/* Thumbnail */}
+                      {imgSrc && (
+                        <img
+                          src={imgSrc}
+                          alt=""
+                          className="flex-shrink-0 object-cover rounded-sm opacity-85 group-hover:opacity-100 transition-opacity hidden sm:block"
+                          style={{ width: "110px", height: "110px" }}
+                        />
+                      )}
                     </Link>
                   );
                 })}
@@ -139,33 +159,57 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-px" style={{ backgroundColor: "#E8D9C4" }}>
-              {themes.map((theme) => (
-                <Link
-                  key={theme.slug}
-                  href={`/blog/category/${theme.slug}`}
-                  className="group p-6 flex flex-col gap-3 transition-colors"
-                  style={{ backgroundColor: "#FAF5EC" }}
-                >
-                  <span
-                    style={{ fontFamily: "var(--font-cormorant)" }}
-                    className="text-xl font-light text-deep-brown group-hover:text-clay transition-colors"
+              {themes.map((theme) => {
+                const themeImages: Record<string, string> = {
+                  rituals:       "/images/rituals-loft.jpg",
+                  "field-notes": "/images/fieldnotes-desk.jpg",
+                  objects:       "/images/objects-vases.jpg",
+                  guides:        "/images/guides-morning.jpg",
+                  reflections:   "/images/reflections-curtain.jpg",
+                };
+                const bgImg = themeImages[theme.slug];
+                return (
+                  <Link
+                    key={theme.slug}
+                    href={`/blog/category/${theme.slug}`}
+                    className="group relative flex flex-col justify-end overflow-hidden transition-colors"
+                    style={{
+                      minHeight: "240px",
+                      backgroundColor: "#2A2016",
+                      backgroundImage: bgImg ? `url(${bgImg})` : undefined,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
                   >
-                    {theme.name}
-                  </span>
-                  <span
-                    style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
-                    className="text-xs font-light leading-relaxed"
-                  >
-                    {theme.description}
-                  </span>
-                  <span
-                    style={{ fontFamily: "var(--font-jost)", color: "#2AADA4" }}
-                    className="text-xs tracking-widest uppercase mt-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    Read →
-                  </span>
-                </Link>
-              ))}
+                    {/* dark gradient overlay */}
+                    <div
+                      className="absolute inset-0 transition-opacity group-hover:opacity-80"
+                      style={{ background: "linear-gradient(to top, rgba(30,20,8,0.82) 0%, rgba(30,20,8,0.35) 60%, transparent 100%)" }}
+                    />
+                    {/* content */}
+                    <div className="relative z-10 p-5 flex flex-col gap-1">
+                      <span
+                        style={{ fontFamily: "var(--font-cormorant)", color: "#FAF5EC" }}
+                        className="text-xl font-light"
+                      >
+                        {theme.name}
+                      </span>
+                      <span
+                        style={{ fontFamily: "var(--font-jost)", color: "rgba(250,245,236,0.72)" }}
+                        className="text-xs font-light leading-relaxed"
+                      >
+                        {theme.description}
+                      </span>
+                      <span
+                        style={{ fontFamily: "var(--font-jost)", color: "#C4A882" }}
+                        className="text-xs tracking-widest uppercase mt-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        Read →
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -243,18 +287,12 @@ export default async function HomePage() {
               className="p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center"
               style={{ border: "1px solid #E8D9C4" }}
             >
-              {/* Image placeholder */}
-              <div
-                className="aspect-square rounded-sm flex items-center justify-center"
-                style={{ backgroundColor: "#E8D9C4" }}
-              >
-                <p
-                  style={{ fontFamily: "var(--font-jost)", color: "#7A5C3E" }}
-                  className="text-xs tracking-widest uppercase opacity-50"
-                >
-                  Photo
-                </p>
-              </div>
+              {/* Object photo */}
+              <img
+                src="/images/objects-ceramics.jpg"
+                alt="Handmade ceramic bowls and plates, flat lay"
+                className="aspect-square object-cover rounded-sm w-full"
+              />
 
               {/* Object info */}
               <div className="flex flex-col gap-4">
